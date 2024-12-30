@@ -1,0 +1,79 @@
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  transition: all 2s ease-in-out;
+}
+
+.carousel-inner {
+  display: flex;
+  width: 100%;
+}
+
+.carousel-item {
+  min-width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  opacity: 0; /* Initially hidden */
+  transition: all 1s ease-in-out;
+  transform: translateX(100%); /* Slide-in from the right initially */
+}
+
+.carousel-item.active {
+  opacity: 1; /* Make active slide visible */
+  transform: translateX(0); /* Slide in */
+}
+
+.carousel img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease-in-out;
+  object-fit: cover; /* Ensure images fit the container */
+}
+
+.carousel-item.active img {
+  transform: scale(1.1); /* Zoom in the active image */
+}
+
+.carousel-item p {
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  opacity: 0;
+  animation: fadeIn 5s forwards 5s; /* Fade-in effect for the caption */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.55;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Optional: Add animation for transitions between slides */
+.carousel-item:not(.active) img {
+  opacity: 0.5; /* Dim non-active images */
+}
